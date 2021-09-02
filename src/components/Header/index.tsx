@@ -5,9 +5,22 @@ import { View, Text } from 'react-native';
 import { styles } from './styles';
 import { theme } from '../../styles/theme';
 
+import Animated, {useAnimatedStyle, useSharedValue, withTiming} from 'react-native-reanimated'
+import { useEffect } from 'react';
+
 export function Header() {
+  const opacity = useSharedValue(0)
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value
+  }))
+
+  useEffect(() => {
+    opacity.value = withTiming(1, {duration: 2000}) ;
+  })
+
   return (
-    <View style={styles.container}>
+    <Animated.View style={[styles.container, animatedStyle]}>
       <Feather
         name="arrow-left"
         color={theme.colors.brown}
@@ -23,6 +36,6 @@ export function Header() {
           Special Sushi
         </Text>
       </View>
-    </View>
+    </Animated.View>
   );
 }
