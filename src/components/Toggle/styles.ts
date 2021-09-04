@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     borderBottomStartRadius: 30,
     borderTopEndRadius: 30,
     alignItems: 'center',
-    paddingVertical: 24
+    paddingVertical: 20
   },
   info: {
     marginTop: 17
